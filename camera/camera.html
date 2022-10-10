@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>camera</title>
+    </head> 
+    <style scoped>
+    .plugin {
+            width: 1500px;
+            height: 800px;
+        }
+        </style>
+    <body>   
+        <legend>连接相机</legend>
+        <table>
+            <tr>
+                <td><input type="button" class="btn" value="登录" onclick="clickLogin();"/></td>
+                <td><input type="button" class="btn" value="退出登录" onclick="clicklogout();"/></td>
+            </tr>
+            <!-- <tr>
+                <td class="tt">通道列表</td>
+                <td>
+                    <select id="channels" class="sel"></select>
+                </td>
+            </tr> -->
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <input type="button" class="btn2" value="开始预览" onclick="clickStartRealPlay();" />
+                </td>
+                <td>
+                    <input type="button" class="btn2" value="停止预览" onclick="clickStopRealPlay()" />
+                </td>
+            </tr>   
+        </table>
+        <div id="divPlugin" class="plugin"></div>
+    </body>
+    <script src="./jquery-1.7.1.min.js"></script>
+    <script src="./codebase/webVideoCtrl.js"></script>
+    <script src="./codebase/encryption/cryptico.min.js"></script>
+    <script src="./camera.js"></script>
+    <script>
+    
+    //初始化窗口插件
+    $(function () {
+
+    var oPlugin = {
+        iWidth: 1500,            // plugin width
+        iHeight: 800            // plugin height
+    };
+
+    WebVideoCtrl.I_InitPlugin(oPlugin.iWidth, oPlugin.iHeight, {
+        bWndFull: true,
+        iWndowType: 1,
+        cbInitPluginComplete: function () {
+            WebVideoCtrl.I_InsertOBJECTPlugin("divPlugin");
+            }
+        });
+
+    });
+    </script>
+</html>
